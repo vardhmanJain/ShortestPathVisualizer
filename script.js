@@ -117,6 +117,7 @@ function run(){
 			}
 			document.querySelector(`.a${src.toString()}`).style.backgroundColor = "#ffd500";
 			unsettled.clear();
+			if(neighbours.size == 0){alert("no shortest parth");clearInterval(hey);return;}
 			for(let item of neighbours){
 					unsettled.add(item);
 					document.querySelector(`.a${item.toString()}`).style.backgroundColor = "#d90429";
