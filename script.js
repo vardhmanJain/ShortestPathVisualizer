@@ -43,6 +43,9 @@ for(let i = 1; i <= 4500; i++){
 			dest = Number(div.className.slice(1));
 			div.style.backgroundColor = "#ffd500";
 			flag++;				
+		}else{
+			div.style.backgroundColor = "#8d0801";
+			blocked.add(Number(div.className.slice(1)));       //adding the walls to a list
 		}
 	})
 	div.addEventListener("mouseover", (event)=>{  //adding listener to create walls when left mouse button is clicked
