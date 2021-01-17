@@ -2,6 +2,7 @@
 const container = document.querySelector(".container");
 const resetbtn = document.querySelector(".resetbtn");
 const button = document.querySelector(".startbtn");
+const instructions = document.querySelector(".instructions");
 
 let sound = new Howl({
 	src:['zig-zag.mp3']
@@ -28,8 +29,10 @@ for(let i = 1; i <= 4500; i++){
 //adding start and reset listeners
 resetbtn.addEventListener("click",reset);
 button.addEventListener("click",run);
+instructions.addEventListener("click", ()=>{alert("1.select a source by clicking a block\n2.select a destination by clicking a block\n3.press left mouse button and hover the cursor on blocks to create walls")})
 
 //adding div to the .container div, and adding class with following convention .a[1-4500]
+
 for(let i = 1; i <= 4500; i++){
 	let div = document.createElement("div");	//creating a div element
 	div.classList.add(`a${i.toString()}`);	    //adding a class follwing the convention .a[1-4500]
