@@ -2,6 +2,7 @@
 const container = document.querySelector(".container");
 const resetbtn = document.querySelector(".resetbtn");
 const button = document.querySelector(".startbtn");
+button.classList.add("isDisabled");
 const instructions = document.querySelector(".instructions");
 
 let sound = new Howl({
@@ -10,7 +11,7 @@ let sound = new Howl({
 let end = new Howl({
 	src:['bubbles.mp3']
 })
-sound.volume(0.3);
+sound.volume(0.2);
 //variable declaration
 let src;
 let dest;
@@ -45,10 +46,14 @@ for(let i = 1; i <= 4500; i++){
 		}else if(flag === 1){
 			dest = Number(div.className.slice(1));
 			div.style.backgroundColor = "#ffd500";
-			flag++;				
+			flag++;	
+			button.classList.remove("isDisabled");			
 		}else{
-			div.style.backgroundColor = "#8d0801";
-			blocked.add(Number(div.className.slice(1)));       //adding the walls to a list
+			if(!running){
+				div.style.backgroundColor = "#8d0801";
+				blocked.add(Number(div.className.slice(1)));       //adding the walls to a list
+			}
+			
 		}
 	})
 	div.addEventListener("mouseover", (event)=>{  //adding listener to create walls when left mouse button is clicked
@@ -70,6 +75,7 @@ function run(){
 	running = true;
 	resetbtn.classList.add("isDisabled");	//disable the resetbutton
 	container.classList.add("isDisabledClear");
+	button.classList.add("isDisabled");
 	weights[src] = 0;
 	unsettled.add(src);
 	let hey = setInterval(task,300);       //using setInterval to slow down the algo 
@@ -158,4 +164,5 @@ function reset(){
 	unsettled.clear();
 	blocked.clear();
 	neighbours.clear();
+
 }
